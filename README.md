@@ -2,7 +2,7 @@
 
 <br>
 
-## 🎥 Preview site :arrow_right: [tap here]()
+## 🎥 Preview site :arrow_right: [tap here](https://szymonrojek.github.io/card-number-verification-JS/)
 
 <br>
 <br>
