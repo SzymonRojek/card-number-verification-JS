@@ -3,11 +3,7 @@ const errorMessage = {
 };
 
 function isLuhnOK(str) {
-  var luhnNumbers = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
-
-  if (!str.length) {
-    return false;
-  }
+  const luhnNumbers = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
 
   const changedIntoNumbersArr = str.split(",").map(Number);
 
@@ -17,8 +13,7 @@ function isLuhnOK(str) {
     return (acc += i % 2 === 0 ? AUX_NUM : luhnNumbers[AUX_NUM]);
   }, 0);
 
-  console.log("a");
-  return resultSum % 10 === 0;
+  return resultSum % 10 === 0 ? true : errorMessage;
 }
 
 export default isLuhnOK;
