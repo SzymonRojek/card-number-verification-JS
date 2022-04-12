@@ -1,7 +1,7 @@
 import {
   hasCardProperLength,
   hasOnlyNumbersAndSpaces,
-  isLuhn,
+  isLuhnOK,
   isStartingNumberCorrect,
   throwWhenNotString,
 } from "../helpers";
@@ -15,7 +15,7 @@ import {
 
   const errorNumberReuired = [{ message: "Card Number is required!" }];
 
-  let errors = [];
+  const errors = [];
 
   function findErrors(str) {
     throwWhenNotString(str);
@@ -23,6 +23,7 @@ import {
     const validationErrors = [
       hasOnlyNumbersAndSpaces(str),
       hasCardProperLength(str),
+      isLuhnOK(str),
     ];
 
     errors =
@@ -85,7 +86,7 @@ import {
     event.preventDefault();
 
     render();
-    console.log(errors);
+
     cardNumberInput.value.trim();
     cardNumberInput.focus();
   }
@@ -96,5 +97,5 @@ import {
     form.addEventListener("submit", onFormSubmit);
   }
 
-  init();
+  // init();
 }
