@@ -17,7 +17,21 @@
           <h1 class="header__heading">Bank Card Verification</h1>
         </header>
         <main class="main-container">
+            <form class="form js-form">
+                <label class="form__label">
+                    Card Number*
+                </label>
+                <input class="form__numberInput js-numberInput" name="number" placeholder="type here">
+                <span class="focus"></span>
 
+
+                <ul class="form__list js-errors"></ul>
+
+                <button class="form__button js-button">check</button>
+
+                <p class="form__message js-additionalMessage"></p>
+                <p class="form__information">*field required</p>
+            </form>
         </main>
         <footer class="footer">&#169; 2022 | Coded by Szymon Rojek</footer>
     </div>
