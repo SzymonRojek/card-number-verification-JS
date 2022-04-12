@@ -15,7 +15,7 @@ import {
 
   const errorNumberReuired = [{ message: "Card Number is required!" }];
 
-  const errors = [];
+  let errors = [];
 
   function findErrors(str) {
     throwWhenNotString(str);
@@ -33,7 +33,7 @@ import {
   }
 
   function checkCardType(str) {
-    const changeToArr = str.split(",").map(Number);
+    const changeToArr = str.split("").map((el) => Number(el));
 
     const mastercard = [51, 52, 53, 54, 55];
     const visa = [4];
@@ -97,5 +97,5 @@ import {
     form.addEventListener("submit", onFormSubmit);
   }
 
-  // init();
+  init();
 }
