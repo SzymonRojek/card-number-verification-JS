@@ -1,0 +1,57 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  color: $color-tertiary;
+  &__label {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  &__numberInput {
+    margin-top: 15px;
+    padding: 10px;
+  }
+  &__list {
+    margin: 0;
+    padding: 30px 0;
+    list-style: none;
+    height: 200px;
+    &-error {
+      margin: 0;
+      padding: 5px 0;
+      font-size: 16px;
+      color: $color-error;
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    font-size: 18px;
+    color: $color-tertiary;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: $color-primary;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: $shadow-secondary;
+    transition: 0.3s transform ease;
+    &:hover {
+      font-weight: 700;
+      transform: scale(1.05);
+    }
+  }
+  &__message {
+    margin-top: 60px;
+    padding: 20px;
+    font-size: 30px;
+    color: $color-primary;
+    text-align: center;
+  }
+  &__information {
+    font-size: 14px;
+    color: $color-tertiary;
+    letter-spacing: 2px;
+  }
+}
