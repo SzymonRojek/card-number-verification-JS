@@ -4,16 +4,22 @@ const errorMessage = {
 
 function isLuhnOK(str) {
   const luhnNumbers = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
+  const numberPatternReg = /\d+/g;
+  const onlyNumbers = str.match(numberPatternReg) || [];
+  const arrNumbers = onlyNumbers
+    .join("")
+    .split("")
+    .map((el) => Number(el));
 
-  const changedIntoNumbersArr = str.split(",").map(Number);
+  return (
+    arrNumbers.reduceRight((acc, _, i) => {
+      const AUX_NUM = parseInt(str.charAt(i), 10);
 
-  const resultSum = changedIntoNumbersArr.reduceRight((acc, _, i) => {
-    const AUX_NUM = parseInt(modifyStr.charAt(i), 10);
-
-    return (acc += i % 2 === 0 ? AUX_NUM : luhnNumbers[AUX_NUM]);
-  }, 0);
-
-  return resultSum % 10 === 0 ? true : errorMessage;
+      return (acc += i % 2 === 0 ? AUX_NUM : luhnNumbers[AUX_NUM]);
+    }, 0) %
+      10 ===
+      0 || errorMessage
+  );
 }
 
 export default isLuhnOK;
