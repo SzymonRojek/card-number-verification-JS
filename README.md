@@ -9,6 +9,10 @@
 
 ## Description:
 
+**in progress**
+
+This is a cards bank validator.
+
 ---
 
 ...
@@ -50,7 +54,7 @@
 1. Install project:
 
 ```
-npm install to have dev dependencies installed.
+npm install
 ```
 
 2. To start development and server for live preview
