@@ -2,7 +2,7 @@ const errorMessage = {
   message: "Probably you have typed wrong numbers - check them again!",
 };
 
-function isLuhnOK(str) {
+export default function isLuhnOK(str) {
   const luhnNumbers = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
   const numberPatternReg = /\d+/g;
   const onlyNumbers = str.match(numberPatternReg) || [];
@@ -21,5 +21,3 @@ function isLuhnOK(str) {
       0 || errorMessage
   );
 }
-
-export default isLuhnOK;
