@@ -1,101 +1,93 @@
 import {
+  getSingleOrDoubleDigits,
   hasCardProperLength,
-  hasOnlyNumbersAndSpaces,
+  hasOnlyNumbers,
   isLuhnOK,
-  isStartingNumberCorrect,
   throwWhenNotString,
 } from "../helpers";
+import cardsData from "./cardsData";
 
-{
-  const cardNumberInput = document.querySelector(".js-numberInput");
-  const additionalScoreElement = document.querySelector(
-    ".js-additionalMessage"
-  );
-  const messageErrorsElement = document.querySelector(".js-errors");
+const cardNumberInput = document.querySelector(".js-numberInput");
+const mainMessageElement = document.querySelector(".js-additionalMessage");
+const messageErrorsElement = document.querySelector(".js-errors");
+const errorNumberReuired = [{ message: "Card Number is required!" }];
 
-  const errorNumberReuired = [{ message: "Card Number is required!" }];
+function init() {
+  const form = document.querySelector(".js-form");
 
-  let errors = [];
+  form.addEventListener("submit", onFormSubmit);
+}
 
-  function findErrors(str) {
-    throwWhenNotString(str);
+function onFormSubmit(event) {
+  event.preventDefault();
 
-    const validationErrors = [
-      hasOnlyNumbersAndSpaces(str),
-      hasCardProperLength(str),
-      isLuhnOK(str),
-    ];
+  cardNumberInput.focus();
+  cardNumberInput.value.trim();
 
-    errors =
-      cardNumberInput.value !== ""
-        ? validationErrors.filter(({ message }) => message)
-        : errorNumberReuired;
-  }
+  const cardType = getCardType(cardNumberInput.value, cardsData);
+  const errors = findErrors(cardNumberInput.value, cardType);
 
-  function checkCardType(str) {
-    const changeToArr = str.split("").map((el) => Number(el));
+  render(errors, cardType);
+}
 
-    const mastercard = [51, 52, 53, 54, 55];
-    const visa = [4];
-    const americanExpress = [34, 37];
+function render(errors, cardType) {
+  renderMessages(errors, cardType);
+}
 
-    switch (changeToArr) {
-      case isStartingNumberCorrect(mastercard, changeToArr) &&
-        !errors.length &&
-        changeToArr:
-        return { message: "Mastercard" };
-      case (isStartingNumberCorrect(visa, changeToArr) &&
-        !errors.length &&
-        changeToArr) ||
-        (isStartingNumberCorrect(visa, changeToArr) &&
-          !errors.length &&
-          changeToArr):
-        return { message: "Visa" };
-      case isStartingNumberCorrect(americanExpress, changeToArr) &&
-        !errors.length &&
-        changeToArr:
-        return { message: "American Express" };
-      default:
-        return { message: "Not correct!" };
-    }
-  }
+function renderMessages(errors, cardType) {
+  const information = "Card is uncorrect!";
+  const FIRST_ITEM = 0;
 
-  function renderMessages(value) {
-    const { message } = !errors.length ? checkCardType(value) : "";
-
-    const messageErrorsToHTML = errors
-      .map(
-        ({ message }) => `
+  const messageErrorsToHTML = errors
+    .map(
+      ({ message }) => `
           <li class="form__list-error">
             ${message}
           </li>
         `
-      )
-      .join("");
+    )
+    .join("");
 
-    messageErrorsElement.innerHTML = messageErrorsToHTML;
-    additionalScoreElement.innerHTML = !errors.length ? `${message}` : "";
-  }
+  messageErrorsElement.innerHTML = messageErrorsToHTML;
 
-  function render() {
-    findErrors(cardNumberInput.value);
-    renderMessages(cardNumberInput.value);
-  }
-
-  function onFormSubmit(event) {
-    event.preventDefault();
-
-    render();
-
-    cardNumberInput.value.trim();
-    cardNumberInput.focus();
-  }
-
-  function init() {
-    const form = document.querySelector(".js-form");
-
-    form.addEventListener("submit", onFormSubmit);
-  }
-
-  init();
+  mainMessageElement.innerHTML =
+    `${cardType.length ? cardType[FIRST_ITEM]?.name : ""}` || `${information}`;
 }
+
+function findErrors(inputValue, selectedCard) {
+  throwWhenNotString(inputValue);
+
+  const validationErrors = [
+    hasOnlyNumbers(inputValue),
+    hasCardProperLength(inputValue, selectedCard),
+    selectedCard,
+  ];
+
+  return inputValue
+    ? validationErrors.filter(({ message }) => message)
+    : errorNumberReuired;
+}
+
+function getCardType(inputValue, cards) {
+  const startingDigitsError = {
+    message: "The beginning of the bank card number is incorrect!",
+  };
+
+  const filteredCard =
+    cards &&
+    cards.filter(({ startingNumbers }) => {
+      const cutLength = !!startingNumbers.find((num) => num >>> 0 === num % 10)
+        ? 1
+        : 2;
+
+      const cutNumber = getSingleOrDoubleDigits(inputValue, cutLength);
+
+      return startingNumbers.includes(cutNumber);
+    });
+
+  return filteredCard.length ? filteredCard : startingDigitsError;
+}
+
+init();
+
+// 5193080150954111
