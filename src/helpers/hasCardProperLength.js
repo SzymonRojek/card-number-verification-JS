@@ -2,11 +2,11 @@ const errorMessage = {
   message: "Please write a proper length of the numbers!",
 };
 
-function hasCardProperLength(str) {
-  const removedSpaces = str.replace(/\s/g, "");
-  const indicatedLengths = [13, 15, 16];
+export default function hasCardProperLength(inputValue, card) {
+  if (!card.length) return errorMessage;
 
-  return indicatedLengths.includes(removedSpaces.length) || errorMessage;
+  return (
+    card.find(({ length }) => length.includes(inputValue.length)) ||
+    errorMessage
+  );
 }
-
-export default hasCardProperLength;
