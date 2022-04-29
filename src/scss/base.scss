@@ -11,4 +11,10 @@ html {
 body {
   background-color: $color-primary;
   font-family: $base-font;
+  background: linear-gradient(
+    50deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 121, 120, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }

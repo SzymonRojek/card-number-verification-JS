@@ -1,0 +1,91 @@
+.cards__collection {
+  margin: 0 auto;
+  height: 100px;
+}
+
+.card {
+  position: relative;
+  font-family: "ocr-a-std", monospace;
+  text-align: left;
+  padding: 20px;
+  margin-bottom: 50px;
+  color: #fff;
+  border-radius: 20px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    50deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 121, 120, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+
+  &__information {
+    color: white;
+    font-size: 20px;
+  }
+
+  &__number {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+
+    text-align: center;
+    letter-spacing: 1px;
+
+    &--correct {
+      color: orange;
+    }
+  }
+
+  &__dates {
+    display: flex;
+    gap: 15px;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+
+    &__expire {
+      font-size: 14px;
+      padding-bottom: 20px;
+      text-align: center;
+
+      &--period::after {
+        content: "\a";
+        white-space: pre;
+        background: red;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__holder {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  &__logo {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    &--mastercard {
+      height: 60px;
+      margin: 5px 5px 0 0;
+    }
+    &--visa {
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    &--americanExpress {
+      height: 70px;
+      margin-left: 20px;
+    }
+  }
+}

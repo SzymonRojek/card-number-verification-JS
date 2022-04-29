@@ -3,12 +3,14 @@
   flex-direction: column;
   color: $color-tertiary;
   &__label {
+    margin-top: 80px;
     font-size: 18px;
     letter-spacing: 2px;
   }
   &__numberInput {
-    margin-top: 15px;
-    padding: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 18px;
   }
   &__list {
     margin: 0;
@@ -27,11 +29,12 @@
     justify-content: center;
     align-items: center;
     padding: 20px 30px;
+    margin-bottom: 50px;
     font-size: 18px;
     color: $color-tertiary;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background-color: $color-primary;
+    background-color: orange;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -42,16 +45,17 @@
       transform: scale(1.05);
     }
   }
-  &__message {
-    margin-top: 60px;
-    padding: 20px;
-    font-size: 30px;
-    color: $color-primary;
-    text-align: center;
-  }
+
   &__information {
     font-size: 14px;
     color: $color-tertiary;
     letter-spacing: 2px;
+  }
+
+  &__footer {
+    padding-top: 40px;
+    color: $color-tertiary;
+    text-align: center;
+    background-color: $color-secondary;
   }
 }
