@@ -9,13 +9,46 @@
 
 ## Description:
 
-**in progress**
+Written program validates three types of bank cards: mastercard, visa, american express. Each card has a specific properties that make it recognizable:
 
-This is a cards bank validator.
+<br>
+<table>
+  <tr>
+    <td>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"  height="50">
+    </td>
+    <td>starting numbers: 51, 52, 53, 54, 55</td>
+    <td>length 16</td>
+  </tr>
+</table>
+<br>
+<table>
+    <td>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"  height="50" width="70">
+    </td>
+    <td>starting numbers: 4</td>
+    <td>length 13 || 16</td>
+  </tr>
+</table>
+<br>
+<table>
+  <tr>
+    <td>
+      <img src="https://remote-europe.com/sites/default/files/styles/medium_300x300_/public/2020-11/americanexpress.jpg?itok=i_4MMKM0"  height="50" width="70">
+    </td>
+    <td>starting numbers: 34 || 37</td>
+    <td>length 15</td>
+  </tr>
+</table>
+<br>
 
----
+After entering wrong characters and numbers, the user will receive a list of errors depends on the error:
 
-...
+- Card Number is required!
+- Password has to contain only numbers!
+- Please write a proper length of the numbers!
+- Luhn's algorithm does not point to the truth!
+- The beginning of the bank card number is incorrect!
 
 <br>
 
