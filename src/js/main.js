@@ -4,12 +4,16 @@ import {
   hasOnlyNumbers,
   isLuhnOK,
   throwWhenNotString,
+  displayFormatNumbersOnChange,
 } from "../helpers";
 import cardsData from "./cardsData";
 
+const cardsCollection = document.querySelector(".js-cards__collection");
+const cardInformation = document.querySelector(".card__information");
+const cardLogo = document.querySelector(".card__logo");
 const cardNumberInput = document.querySelector(".js-numberInput");
-const mainMessageElement = document.querySelector(".js-additionalMessage");
-const messageErrorsElement = document.querySelector(".js-errors");
+const messageErrorsElement = document.querySelector(".js-form__list--errors");
+const cardNumberText = document.querySelector(".card__number");
 const errorNumberReuired = [{ message: "Card Number is required!" }];
 
 function init() {
@@ -17,6 +21,13 @@ function init() {
 
   form.addEventListener("submit", onFormSubmit);
 }
+
+cardsData.forEach((card) => {
+  const img = new Image();
+  img.src = card.imgUrl;
+  img.classList.add(card.atr);
+  cardsCollection.append(img);
+});
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -35,8 +46,8 @@ function render(errors, cardType) {
 }
 
 function renderMessages(errors, cardType) {
-  const information = "Card is uncorrect!";
-  const FIRST_ITEM = 0;
+  const information = "Unknow";
+  const FIRST_CARD = 0;
 
   const messageErrorsToHTML = errors
     .map(
@@ -50,8 +61,17 @@ function renderMessages(errors, cardType) {
 
   messageErrorsElement.innerHTML = messageErrorsToHTML;
 
-  mainMessageElement.innerHTML =
-    `${cardType.length ? cardType[FIRST_ITEM]?.name : ""}` || `${information}`;
+  if (!errors.length) {
+    cardLogo.src = cardType[FIRST_CARD].imgUrl;
+    cardLogo.classList.add(cardType[FIRST_CARD].atr);
+    cardNumberText.classList.add("card__number--correct");
+    cardInformation.textContent = "Card";
+  } else {
+    cardLogo.removeAttribute("src");
+
+    cardNumberText.classList.remove("card__number--correct");
+    cardInformation.textContent = "Card unknown";
+  }
 }
 
 function findErrors(inputValue, selectedCard) {
@@ -60,6 +80,7 @@ function findErrors(inputValue, selectedCard) {
   const validationErrors = [
     hasOnlyNumbers(inputValue),
     hasCardProperLength(inputValue, selectedCard),
+    isLuhnOK(inputValue),
     selectedCard,
   ];
 
@@ -86,6 +107,32 @@ function getCardType(inputValue, cards) {
     });
 
   return filteredCard.length ? filteredCard : startingDigitsError;
+}
+
+cardNumberInput.addEventListener("input", ({ target: value }) => {
+  const defaultFormat = "0000 0000 0000 0000";
+  cardNumberText.textContent =
+    value !== ""
+      ? displayFormatNumbersOnChange(cardNumberInput.value)
+      : defaultFormat;
+
+  checkAtributesOnInputChange();
+});
+
+function checkAtributesOnInputChange() {
+  if (cardLogo.hasAttribute("src")) {
+    cardLogo.removeAttribute("src");
+  }
+
+  if (cardNumberText.classList.contains("card__number--correct")) {
+    cardNumberText.classList.remove("card__number--correct");
+  }
+
+  cardsData.forEach(({ atr }) => {
+    if (cardLogo.classList.contains(atr)) {
+      cardLogo.classList.remove(atr);
+    }
+  });
 }
 
 init();
