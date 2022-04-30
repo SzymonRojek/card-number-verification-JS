@@ -14,13 +14,8 @@ const cardLogo = document.querySelector(".js-card__logo");
 const cardNumberInput = document.querySelector(".js-numberInput");
 const messageErrorsElement = document.querySelector(".js-form__list--errors");
 const cardNumberText = document.querySelector(".js-card__number");
+
 const errorNumberReuired = [{ message: "Card Number is required!" }];
-
-function init() {
-  const form = document.querySelector(".js-form");
-
-  form.addEventListener("submit", onFormSubmit);
-}
 
 cardsData.forEach((card) => {
   const img = new Image();
@@ -28,6 +23,12 @@ cardsData.forEach((card) => {
   img.classList.add(card.atr);
   cardsCollection.append(img);
 });
+
+function init() {
+  const form = document.querySelector(".js-form");
+
+  form.addEventListener("submit", onFormSubmit);
+}
 
 function onFormSubmit(event) {
   event.preventDefault();
