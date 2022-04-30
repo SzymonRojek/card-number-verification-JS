@@ -8,7 +8,10 @@ export default function displayFormatNumbersOnChange(number) {
     newFormat += number[i] || el;
   }
 
-  const slicedFormatZeros = newFormat.slice(0, -(16 - number.length));
+  const slicedFormatZeros = newFormat.slice(
+    0,
+    -(formatZeros.length - number.length)
+  );
 
   switch (number.length) {
     case 1:
