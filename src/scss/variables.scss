@@ -1,13 +1,20 @@
-$color-primary: #bf1650;
-$color-secondary: #081229;
-$color-tertiary: white;
-$color-error: crimson;
-$base-font: "Lato", sans-serif;
+$bgc-primary: linear-gradient(
+  50deg,
+  rgba(2, 0, 36, 1) 0%,
+  rgba(9, 121, 120, 1) 0%,
+  rgba(0, 212, 255, 1) 100%
+);
+$bgc-secondary: #081229;
+$bgc-tertiary: orange;
+
+$color-primary: white;
+$color-secondary: crimson;
+$color-tertiary: orange;
+
+$base-font-primary: "Lato", sans-serif;
+$base-font-secondary: "ocr-a-std", monospace;
+
 $shadow-primary: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 $shadow-secondary: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
   rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-
-// additional
-
-$green: #2ddd10;
-$orange: #cd7b21;
+$shadow-tertiary: 0 1px 1px rgba(0, 0, 0, 0.6);

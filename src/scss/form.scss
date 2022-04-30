@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  color: $color-tertiary;
+
   &__label {
     margin-top: 80px;
     font-size: 18px;
@@ -21,7 +21,7 @@
       margin: 0;
       padding: 5px 0;
       font-size: 16px;
-      color: $color-error;
+      color: $color-secondary;
     }
   }
   &__button {
@@ -31,10 +31,9 @@
     padding: 20px 30px;
     margin-bottom: 50px;
     font-size: 18px;
-    color: $color-tertiary;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background-color: orange;
+    background-color: $bgc-secondary;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -48,14 +47,11 @@
 
   &__information {
     font-size: 14px;
-    color: $color-tertiary;
     letter-spacing: 2px;
   }
 
   &__footer {
     padding-top: 40px;
-    color: $color-tertiary;
     text-align: center;
-    background-color: $color-secondary;
   }
 }

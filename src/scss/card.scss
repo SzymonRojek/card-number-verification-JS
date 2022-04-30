@@ -5,44 +5,52 @@
 
 .card {
   position: relative;
-  font-family: "ocr-a-std", monospace;
+  font-family: $base-font-secondary;
   text-align: left;
   padding: 20px;
   margin-bottom: 50px;
-  color: #fff;
   border-radius: 20px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
-  background: linear-gradient(
-    50deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 121, 120, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
+  text-shadow: $shadow-tertiary;
+  background: $bgc-primary;
 
-  &__information {
-    color: white;
-    font-size: 20px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &-information {
+      font-size: 20px;
+      padding-bottom: 15px;
+    }
+
+    &-contactless {
+      height: 40px;
+    }
+  }
+
+  &__chip {
+    height: 70px;
+    width: 70px;
+    padding-left: 10px;
   }
 
   &__number {
-    margin: 0;
+    padding: 20px;
     font-size: 30px;
     font-weight: bold;
-
     text-align: center;
     letter-spacing: 1px;
 
     &--correct {
-      color: orange;
+      color: $color-tertiary;
     }
   }
 
   &__dates {
     display: flex;
     gap: 15px;
+    padding-left: 10px;
     font-size: 10px;
     text-transform: uppercase;
-    padding: 10px;
 
     &__expire {
       font-size: 14px;
@@ -52,7 +60,6 @@
       &--period::after {
         content: "\a";
         white-space: pre;
-        background: red;
       }
     }
   }
@@ -68,9 +75,9 @@
   }
 
   &__logo {
+    position: absolute;
     margin: 0;
     padding: 0;
-    position: absolute;
     right: 20px;
     bottom: 20px;
 
@@ -78,6 +85,7 @@
       height: 60px;
       margin: 5px 5px 0 0;
     }
+
     &--visa {
       height: 40px;
       margin-bottom: 10px;
