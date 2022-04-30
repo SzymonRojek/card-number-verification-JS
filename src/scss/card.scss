@@ -57,7 +57,7 @@
       padding-bottom: 20px;
       text-align: center;
 
-      &--period::after {
+      &-period::after {
         content: "\a";
         white-space: pre;
       }
