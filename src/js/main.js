@@ -9,11 +9,11 @@ import {
 import cardsData from "./cardsData";
 
 const cardsCollection = document.querySelector(".js-cards__collection");
-const cardInformation = document.querySelector(".card__information");
-const cardLogo = document.querySelector(".card__logo");
+const cardInformation = document.querySelector(".js-card__header-information");
+const cardLogo = document.querySelector(".js-card__logo");
 const cardNumberInput = document.querySelector(".js-numberInput");
 const messageErrorsElement = document.querySelector(".js-form__list--errors");
-const cardNumberText = document.querySelector(".card__number");
+const cardNumberText = document.querySelector(".js-card__number");
 const errorNumberReuired = [{ message: "Card Number is required!" }];
 
 function init() {
@@ -46,7 +46,6 @@ function render(errors, cardType) {
 }
 
 function renderMessages(errors, cardType) {
-  const informationCard = "Card unknow";
   const FIRST_CARD = 0;
 
   const messageErrorsToHTML = errors
@@ -70,7 +69,7 @@ function renderMessages(errors, cardType) {
     cardLogo.removeAttribute("src");
 
     cardNumberText.classList.remove("card__number--correct");
-    cardInformation.textContent = informationCard;
+    cardInformation.textContent = "Card unknown";
   }
 }
 
