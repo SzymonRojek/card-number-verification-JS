@@ -50,7 +50,7 @@ Written program validates three types of bank cards: mastercard, visa, american 
 After entering wrong characters and numbers, the user will receive a list of errors depends on the error:
 
 - Card Number is required!
-- Password has to contain only numbers!
+- Please type only numbers!
 - Please write a proper length of the numbers!
 - Luhn's algorithm does not point to the truth!
 - The beginning of the bank card number is incorrect!
