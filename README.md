@@ -71,6 +71,8 @@ Exmaples of types card & numbers to check:
 | American Express | 378282246310005  |
 | American Express | 371449635398431  |
 
+<br>
+
 ## I have used:
 
 ---
