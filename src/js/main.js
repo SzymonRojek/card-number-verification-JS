@@ -46,7 +46,7 @@ function render(errors, cardType) {
 }
 
 function renderMessages(errors, cardType) {
-  const information = "Unknow";
+  const informationCard = "Card unknow";
   const FIRST_CARD = 0;
 
   const messageErrorsToHTML = errors
@@ -70,7 +70,7 @@ function renderMessages(errors, cardType) {
     cardLogo.removeAttribute("src");
 
     cardNumberText.classList.remove("card__number--correct");
-    cardInformation.textContent = "Card unknown";
+    cardInformation.textContent = informationCard;
   }
 }
 
@@ -136,5 +136,3 @@ function checkAtributesOnInputChange() {
 }
 
 init();
-
-// 5193080150954111
