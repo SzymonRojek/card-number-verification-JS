@@ -49,13 +49,12 @@
     display: flex;
     gap: 15px;
     padding-left: 10px;
-    font-size: 10px;
     text-transform: uppercase;
 
     &__expire {
-      font-size: 14px;
       padding-bottom: 20px;
       text-align: center;
+      font-size: 14px;
 
       &-period::after {
         content: "\a";
@@ -94,6 +93,49 @@
     &--americanExpress {
       height: 70px;
       margin-left: 20px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    &__header {
+      &-contactless {
+        height: 25px;
+      }
+    }
+
+    &__chip {
+      height: 40px;
+      width: 40px;
+      padding-left: 10px;
+    }
+    &__number {
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    &__dates {
+      &__expire {
+        font-size: 10px;
+      }
+    }
+
+    &__holder {
+      font-size: 15px;
+    }
+
+    &__logo {
+      &--mastercard {
+        height: 40px;
+      }
+
+      &--visa {
+        height: 20px;
+        margin-bottom: 10px;
+      }
+
+      &--americanExpress {
+        height: 30px;
+      }
     }
   }
 }

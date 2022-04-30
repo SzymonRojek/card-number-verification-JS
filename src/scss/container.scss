@@ -12,4 +12,8 @@
   background-color: $bgc-secondary;
   border-radius: 6px;
   box-shadow: $shadow-primary;
+
+  @media (max-width: 500px) {
+    padding: 20px 15px;
+  }
 }
