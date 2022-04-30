@@ -59,6 +59,18 @@ I have decided to use default text input instead of type number because I wanted
 
 <br>
 
+Exmaples of types card & numbers to check:
+
+| CardType         | Number           |
+| ---------------- | ---------------- |
+| Mastercard       | 5555555555554444 |
+| Mastercard       | 5105105105105100 |
+| Visa             | 4111111111111111 |
+| Visa             | 4012888888881881 |
+| Visa             | 4222222222222    |
+| American Express | 378282246310005  |
+| American Express | 371449635398431  |
+
 ## I have used:
 
 ---
