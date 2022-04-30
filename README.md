@@ -1,8 +1,13 @@
-# Bank Card Veryfication
+# Bank Card Verification
 
 <br>
 
 ## 🎥 Preview site :arrow_right: [tap here](https://szymonrojek.github.io/card-number-verification-JS/)
+
+<br>
+<br>
+
+<img src="./src/img/giff.gif" width="250" height="400">
 
 <br>
 <br>
@@ -49,6 +54,8 @@ After entering wrong characters and numbers, the user will receive a list of err
 - Please write a proper length of the numbers!
 - Luhn's algorithm does not point to the truth!
 - The beginning of the bank card number is incorrect!
+
+I have decided to use default text input instead of type number because I wanted to write additional custom validation. Normally in the real application I would use type number because it includes built-in validation to reject non-numerical entries.
 
 <br>
 
