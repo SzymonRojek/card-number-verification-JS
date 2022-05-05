@@ -23,7 +23,7 @@
       margin: 0;
       padding: 5px 0;
       font-size: 16px;
-      color: $color-secondary;
+      color: $color-error-secondary;
     }
   }
 
@@ -55,12 +55,13 @@
     }
 
     &__button {
+      margin-bottom: 20px;
       padding: 15px 30px;
       font-size: 15px;
     }
 
     &__list {
-      height: 190px;
+      height: 150px;
 
       &-error {
         font-size: 12px;
