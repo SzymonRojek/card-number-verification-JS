@@ -19,7 +19,6 @@
 
     &-information {
       font-size: 20px;
-      padding-bottom: 15px;
     }
 
     &-contactless {
@@ -41,7 +40,11 @@
     letter-spacing: 1px;
 
     &--correct {
-      color: $color-tertiary;
+      color: $color-secondary;
+    }
+
+    &--uncorrect {
+      color: $color-error-primary;
     }
   }
 
