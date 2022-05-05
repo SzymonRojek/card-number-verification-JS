@@ -2,12 +2,12 @@
 
 <br>
 
-## 🎥 Preview site :arrow_right: [tap here](https://szymonrojek.github.io/card-number-verification-JS/)
+## 🎥 [demo link](https://szymonrojek.github.io/card-number-verification-JS/)
 
 <br>
 <br>
 
-<img src="./src/img/giff.gif" width="250" height="400">
+<img src="./src/img/gi.gif" width="250" height="400">
 
 <br>
 <br>
