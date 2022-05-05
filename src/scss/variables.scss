@@ -2,14 +2,16 @@ $bgc-primary: linear-gradient(
   50deg,
   rgba(2, 0, 36, 1) 0%,
   rgba(9, 121, 120, 1) 0%,
-  rgba(0, 212, 255, 1) 100%
+  #33ddff
 );
 $bgc-secondary: #081229;
-$bgc-tertiary: orange;
+$bgc-tertiary: #ffbd42;
 
 $color-primary: white;
-$color-secondary: crimson;
-$color-tertiary: orange;
+$color-secondary: rgb(245, 176, 47);
+
+$color-error-primary: #a50d2c;
+$color-error-secondary: #f02850;
 
 $base-font-primary: "Lato", sans-serif;
 $base-font-secondary: "ocr-a-std", monospace;
