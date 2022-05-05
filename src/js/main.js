@@ -4,7 +4,7 @@ import {
   isLuhnOK,
   throwWhenNotString,
   formatCardNumber,
-} from "../helpers";
+} from "./helpers";
 import cardsData from "./cardsData";
 
 const cardsCollection = document.querySelector(".js-cards__collection");
