@@ -1,30 +1,23 @@
 import {
-  getSingleOrDoubleDigits,
-  hasCardProperLength,
-  hasOnlyNumbers,
+  findCardWithStartingNumber,
+  hasProperLength,
   isLuhnOK,
   throwWhenNotString,
-  displayFormatNumbersOnChange,
+  formatCardNumber,
 } from "../helpers";
 import cardsData from "./cardsData";
 
 const cardsCollection = document.querySelector(".js-cards__collection");
-const cardInformation = document.querySelector(".js-card__header-information");
 const cardLogo = document.querySelector(".js-card__logo");
 const cardNumberInput = document.querySelector(".js-numberInput");
 const messageErrorsElement = document.querySelector(".js-form__list--errors");
 const cardNumberText = document.querySelector(".js-card__number");
 
-const errorNumberReuired = [{ message: "Card Number is required!" }];
-
-cardsData.forEach((card) => {
-  const img = new Image();
-  img.src = card.imgUrl;
-  img.classList.add(card.atr);
-  cardsCollection.append(img);
-});
+init();
 
 function init() {
+  renderImagesCollection();
+
   const form = document.querySelector(".js-form");
 
   form.addEventListener("submit", onFormSubmit);
@@ -36,10 +29,12 @@ function onFormSubmit(event) {
   cardNumberInput.focus();
   cardNumberInput.value.trim();
 
-  const cardType = getCardType(cardNumberInput.value, cardsData);
+  const cardType = findCardWithStartingNumber(cardNumberInput.value, cardsData);
   const errors = findErrors(cardNumberInput.value, cardType);
 
   render(errors, cardType);
+
+  !errors.length ? (cardNumberInput.value = "") : 1;
 }
 
 function render(errors, cardType) {
@@ -47,8 +42,6 @@ function render(errors, cardType) {
 }
 
 function renderMessages(errors, cardType) {
-  const FIRST_CARD = 0;
-
   const messageErrorsToHTML = errors
     .map(
       ({ message }) => `
@@ -61,27 +54,22 @@ function renderMessages(errors, cardType) {
 
   messageErrorsElement.innerHTML = messageErrorsToHTML;
 
-  if (!errors.length) {
-    cardLogo.src = cardType[FIRST_CARD].imgUrl;
-    cardLogo.classList.add(cardType[FIRST_CARD].atr);
-    cardNumberText.classList.add("card__number--correct");
-    cardInformation.textContent = "Card";
-  } else {
-    cardLogo.removeAttribute("src");
-
-    cardNumberText.classList.remove("card__number--correct");
-    cardInformation.textContent = "Card unknown";
-  }
+  checkAtributesOnClick(errors, cardType);
 }
 
 function findErrors(inputValue, selectedCard) {
   throwWhenNotString(inputValue);
 
+  const errorNumberReuired = [{ message: "Card Number is required" }];
+  const startingDigitsError = {
+    message:
+      "Card number is incorrect - only MasterCard, Visa or American Express are required",
+  };
+
   const validationErrors = [
-    hasOnlyNumbers(inputValue),
-    hasCardProperLength(inputValue, selectedCard),
+    hasProperLength(inputValue, selectedCard),
     isLuhnOK(inputValue),
-    selectedCard,
+    !selectedCard.length ? startingDigitsError : "",
   ];
 
   return inputValue
@@ -89,35 +77,31 @@ function findErrors(inputValue, selectedCard) {
     : errorNumberReuired;
 }
 
-function getCardType(inputValue, cards) {
-  const startingDigitsError = {
-    message: "The beginning of the bank card number is incorrect!",
-  };
-
-  const filteredCard =
-    cards &&
-    cards.filter(({ startingNumbers }) => {
-      const cutLength = !!startingNumbers.find((num) => num >>> 0 === num % 10)
-        ? 1
-        : 2;
-
-      const cutNumber = getSingleOrDoubleDigits(inputValue, cutLength);
-
-      return startingNumbers.includes(cutNumber);
-    });
-
-  return filteredCard.length ? filteredCard : startingDigitsError;
-}
-
-cardNumberInput.addEventListener("input", ({ target: value }) => {
+cardNumberInput.addEventListener("input", (event) => {
   const defaultFormat = "0000 0000 0000 0000";
   cardNumberText.textContent =
-    value !== ""
-      ? displayFormatNumbersOnChange(cardNumberInput.value)
+    event.target.value !== ""
+      ? formatCardNumber(cardNumberInput.value)
       : defaultFormat;
+
+  messageErrorsElement.textContent = event.target.value && "";
 
   checkAtributesOnInputChange();
 });
+
+function checkAtributesOnClick(errors, cardType) {
+  const FIRST_CARD = 0;
+
+  if (!errors.length) {
+    cardLogo.src = cardType[FIRST_CARD].imgUrl;
+    cardLogo.classList.add(cardType[FIRST_CARD].imgClass);
+    cardNumberText.classList.add("card__number--correct");
+  } else {
+    cardLogo.removeAttribute("src");
+    cardNumberText.classList.remove("card__number--correct");
+    cardNumberText.classList.add("card__number--uncorrect");
+  }
+}
 
 function checkAtributesOnInputChange() {
   if (cardLogo.hasAttribute("src")) {
@@ -128,11 +112,22 @@ function checkAtributesOnInputChange() {
     cardNumberText.classList.remove("card__number--correct");
   }
 
-  cardsData.forEach(({ atr }) => {
-    if (cardLogo.classList.contains(atr)) {
-      cardLogo.classList.remove(atr);
+  if (cardNumberText.classList.contains("card__number--uncorrect")) {
+    cardNumberText.classList.remove("card__number--uncorrect");
+  }
+
+  cardsData.forEach(({ imgClass }) => {
+    if (cardLogo.classList.contains(imgClass)) {
+      cardLogo.classList.remove(imgClass);
     }
   });
 }
 
-init();
+function renderImagesCollection() {
+  cardsData.forEach(({ imgUrl, imgClass }) => {
+    const img = new Image();
+    img.src = imgUrl;
+    img.classList.add(imgClass);
+    cardsCollection.append(img);
+  });
+}
