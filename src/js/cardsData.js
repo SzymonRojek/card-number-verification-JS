@@ -15,7 +15,7 @@ export const cardsData = [
   },
   {
     imgUrl:
-      "https://remote-europe.com/sites/default/files/styles/medium_300x300_/public/2020-11/americanexpress.jpg?itok=i_4MMKM0",
+      "https://logosarchive.com/wp-content/uploads/2021/07/American-Express-logo.svg",
     imgClass: "card__logo--americanExpress",
     startingNumbers: [34, 37],
     length: [15],
