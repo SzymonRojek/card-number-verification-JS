@@ -1,5 +1,5 @@
 const errorMessage = {
-  message: "Luhn's algorithm does not point to the truth!",
+  message: "Luhn's algorithm does not point to the truth",
 };
 
 export default function isLuhnOK(inputValue) {
