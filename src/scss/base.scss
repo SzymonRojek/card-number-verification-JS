@@ -11,6 +11,9 @@ html {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: $color-primary;
   font-family: $base-font-primary;
   background: $bgc-primary;

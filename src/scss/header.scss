@@ -1,5 +1,5 @@
 .header {
-  padding: 20px;
+  padding: 40px;
 
   &__heading {
     padding: 20px;
@@ -7,9 +7,20 @@
     text-align: center;
     letter-spacing: 1px;
     word-spacing: 3px;
+  }
 
-    @media (max-width: 500px) {
+  &__cards__collection {
+    padding: 20px;
+    text-align: center;
+  }
+
+  @media (max-width: 500px) {
+    &__heading {
       font-size: 25px;
+    }
+
+    &__cards__collection {
+      padding: 0;
     }
   }
 }
