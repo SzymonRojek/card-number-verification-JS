@@ -47,15 +47,12 @@ Written program validates three types of bank cards: mastercard, visa, american 
 </table>
 <br>
 
-After entering wrong characters and numbers, the user will receive a list of errors depends on the error:
+After entering wrong characters the user will receive a list of errors depends on the error:
 
-- Card Number is required!
-- Please type only numbers!
-- Please write a proper length of the numbers!
-- Luhn's algorithm does not point to the truth!
-- The beginning of the bank card number is incorrect!
-
-I have decided to use default text input instead of type number because I wanted to write additional custom validation. Normally in the real application I would use type number because it includes built-in validation to reject non-numerical entries.
+- Card Number is required
+- Please write a proper length of the numbers
+- Luhn's algorithm does not point to the truth
+- Card number is incorrect - only MasterCard, Visa or American Express are required",
 
 <br>
 
